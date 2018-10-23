@@ -1,5 +1,5 @@
 # react-native-android-toast
-Exposes Native Toast functionality from a React Native app (Testing)
+Exposes Native Toast functionality from a React Native app.  Intended to be used as a Getting Started Guide.
 
 Note: this is just being created by following the tutorial found here: https://cmichel.io/how-to-create-react-native-android-library
 
