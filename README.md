@@ -10,12 +10,12 @@ https://github.com/MrToph/react-native-android-library-boilerplate
 
 This was tested using the node v10.12.0
 
-After creating a project following the instructions here:
+Creating a React Native project following the instructions here:
 https://facebook.github.io/react-native/docs/getting-started
 
 Follow the steps under Building Projects with Native code but initialize the project with React Version 0.57.1 as 0.57.3 has some bugs in it at the time of this writing.
 
-First, make sure you can run the default project following their steps without any issues.  Once you can see the project run on both an Android Emulator and an iOS Emulator proceed with the following steps.
+First make sure you can run the default project following their steps without any issues.  Once you can see the project run on both an Android Emulator and an iOS Emulator proceed with the following steps.
 
 
 After the project is initialized add this project by running at the root
@@ -109,3 +109,5 @@ or
 ```
 react-native run-ios
 ```
+
+You should be able to see that when the platform is Android, it executes the native Android Module that was added, and when it is ios, it just executes an alert.
