@@ -54,8 +54,6 @@ Launch Android Studio and import the project by selecting `[your project root]/a
 
 Note: A gotcha here is that it will fail to find a file and in the project `build.gradle`, need to set `google()` first in both of the `repositories` or Gradle will fail.  See https://stackoverflow.com/questions/52944351/android-ci-build-could-not-find-aapt2-proto-jar
 
-It should launch and from the Android view/perspective you should see both the `app` project and the `react-native-android-toast` components.
-
 modify `settings.gradle` like so:
 
 ```
@@ -75,9 +73,11 @@ dependencies {
 
 Note: the site references `compile` but this has been updated to use `api` with the updated gradle build tools
 
+Once you have done that, and resync the project, you should see both the main android project project and the `react-native-android-toast` project/component.
+
 A Note on Android Studio and Gradle: When I initially just used the code as it was in the other Tutorial, the build tools and the target SDK in the main React Native project were not in sync with target SDK found in the react-native-android-toast `build.gradle` file.  So it is possible that when you run `react-native init ...` It may be targeting a more recent version of the SDK.  At this time, I am not sure the best way because then Android Studio was encouraging to update the `build.gradle` file as found under `node_modules` but if you ever update the package using `npm` that obviously can become a problem.  At this time, I am not sure the best way to deal with that.  Thus, this package is built to be compatible if you initialize a react-native at 0.57.1 and I am assuming that would target android sdk 27.
 
-Then in `MainApplication.java` you can add the following:
+Then in `MainApplication.java` in the main project you can add the following:
 
 ```
 import com.upstreamengineering.Package;  // add this for react-native-android-toast
@@ -107,7 +107,7 @@ import { NativeModules } from 'react-native'
 module.exports = NativeModules.ToastA
 ```
 
-NOTE: there is an `index.ios.js` so that when it runs iOS it at least loads this required file but obviously doesn't do anything.  But if this is not present, you will see an error in the Metro Bundler console logs saying it couldn't find an index.js file.
+NOTE: there is an `index.ios.js` in this project so that when it runs iOS it at least loads this required file but obviously doesn't do anything.  But if this is not present, you will see an error in the Metro Bundler console logs saying it couldn't find an index.js file.
 
 Another Note: When I had the getName() returning `"ToastAndroid"` I believe I was running into a conflict because there is already a module named `ToastAndroid` in one of the facebook .jar libraries, so it was renamed to `"ToastA"` just for this example.
 
