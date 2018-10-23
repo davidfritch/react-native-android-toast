@@ -10,6 +10,8 @@ https://github.com/MrToph/react-native-android-library-boilerplate
 
 This was tested using the node v10.12.0
 
+Note: I was not using `yarn` to help.  It seemed I ran into issues when yarn was installed.
+
 Creating a React Native project following the instructions here:
 https://facebook.github.io/react-native/docs/getting-started
 
