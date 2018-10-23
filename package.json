@@ -1,0 +1,27 @@
+{
+  "name": "react-native-android-toast",
+  "version": "0.0.1",
+  "author": "David Fritch",
+  "private": false,
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidfritch/react-native-android-toast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidfritch/react-native-android-toast/issues"
+  },
+  "homepage": "https://github.com/davidfritch/react-native-android-toast",
+  "keywords": [
+    "react-native",
+    "android",
+    "library"
+  ],
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.38.0"
+  }
+}
