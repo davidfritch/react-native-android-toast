@@ -53,6 +53,8 @@ dependencies {
 
 Note: the site references `compile` but this has been updated to use `api` with the updated gradle build tools
 
+A Note on Android Studio and Gradle: When I initially just used the code as it was in the other Tutorial, the build tools and the target SDK in the main React Native project were not in sync with target SDK found in the react-native-android-toast `build.gradle` file.  So it is possible that when you run `react-native init ...` It may be targeting a more recent version of the SDK.  At this time, I am not sure the best way because then Android Studio was encouraging to update the `build.gradle` file as found under `node_modules` but if you ever update the package using `npm` that obviously can become a problem.  At this time, I am not sure the best way to deal with that.  Thus, this package is built to be compatible if you initialize a react-native at 0.57.1 and I am assuming that would target android sdk 27.
+
 Then in `MainApplication.java` you can add the following:
 
 ```
