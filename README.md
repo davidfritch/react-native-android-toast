@@ -17,6 +17,24 @@ https://facebook.github.io/react-native/docs/getting-started
 
 Follow the steps under Building Projects with Native code but initialize the project with React Version 0.57.1 as 0.57.3 has some bugs in it at the time of this writing.
 
+For example,
+
+```
+react-native init --version="react-native@0.57.1" DemoNativeAndroidModuleProject
+```
+
+But then, this answer https://stackoverflow.com/questions/52784633/i-have-some-error-when-add-button-to-my-react-native-app/52796919#52796919
+
+Mentions that once you do that you need to add some missing dependencies.  Initially, I had just used the default which put me at react v0.53 and I needed to downgrade
+
+```
+npm add @babel/runtime
+npm i -D schedule@0.4.0
+npm i
+```
+
+NOTE: if you forget to run these, you will see errors in the Metro Bundler console logs saying it couldn't find a file, I believe it is under the `@babel` component and will recommend 4 different things to try.  But, none of those work and you just need to add the dependencies above.
+
 First make sure you can run the default project following their steps without any issues.  Once you can see the project run on both an Android Emulator and an iOS Emulator proceed with the following steps.
 
 NOTE: the first time trying to run it on ios, I believe I saw something like `:CFBundleIdentifer does not exist`, but just running it a second time it went away.  Also, don't get thrown off by warnings that you may see in the console after initially running and it can take almost a minute or so for everything to compile before it actually launches the emulator the first time and deploys the app to the emulated device.  Android seems to be much quicker initially.
