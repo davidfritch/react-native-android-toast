@@ -17,6 +17,8 @@ Follow the steps under Building Projects with Native code but initialize the pro
 
 First make sure you can run the default project following their steps without any issues.  Once you can see the project run on both an Android Emulator and an iOS Emulator proceed with the following steps.
 
+NOTE: the first time trying to run it on ios, I believe I saw something like `:CFBundleIdentifer does not exist`, but just running it a second time it went away.  Also, don't get thrown off by warnings that you may see in the console after initially running and it can take almost a minute or so for everything to compile before it actually launches the emulator the first time and deploys the app to the emulated device.  Android seems to be much quicker initially.
+
 
 After the project is initialized add this project by running at the root
 
