@@ -26,7 +26,68 @@ After the project is initialized add this project by running at the root
 npm install --save git+https://github.com/davidfritch/react-native-android-toast.git
 ```
 
-Add a `ToastAndroidExample.js` file to your project as follows:
+Then see the "Installing it as a library in your main project" section in https://cmichel.io/how-to-create-react-native-android-library where he says which files need to be updated.
+
+But here are the steps for convenience:
+
+Launch Android Studio and import the project by selecting `[your project root]/android` directory.
+
+It should launch and from the Android view/perspective you should see both the `app` project and the `react-native-android-toast` components.
+
+modify `settings.gradle` like so:
+
+```
+include ':react-native-android-toast'
+project(':react-native-android-toast').projectDir = new File(settingsDir, '../node_modules/react-native-android-toast/android')
+```
+
+Modify `/app/build.gradle` with the following:
+
+```
+dependencies {
+    // ...
+    implementation "com.facebook.react:react-native:0.57.1"  // From node_modules
+    api project(':react-native-android-toast')
+}
+```
+
+Note: the site references `compile` but this has been updated to use `api` with the updated gradle build tools
+
+Then in `MainApplication.java` you can add the following:
+
+```
+import com.upstreamengineering.Package;  // add this for react-native-android-toast
+```
+
+```
+@Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.asList(
+          new MainReactPackage()
+          ,new Package() // The new object
+      );
+    }
+```
+
+NOTE: if Android Studio is appearing to have compile issues, try refreshing/resyncing/running the gradle build.
+
+All the steps above, if I understand it, basically registers this new ReactPackage which is a wrapper for the native Android Toast component to be available.  
+
+The `getName()` in `Module.java` allows it to be referenced in `index.android.js` like this
+
+```
+'use strict'
+
+import { NativeModules } from 'react-native'
+// name as defined via ReactContextBaseJavaModule's getName
+module.exports = NativeModules.ToastA
+```
+
+NOTE: there is an `index.ios.js` so that when it runs iOS it at least loads this required file but obviously doesn't do anything.  But if this is not present, you will see an error in the Metro Bundler console logs saying it couldn't find an index.js file.
+
+Another Note: When I had the getName() returning `"ToastAndroid"` I believe I was running into a conflict because there is already a module named `ToastAndroid` in one of the facebook .jar libraries, so it was renamed to `"ToastA"` just for this example.
+
+Add a `ToastAndroidExample.js` file to your React Native project as follows:
 
 ```
 /**
