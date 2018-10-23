@@ -7,6 +7,13 @@ def computeVersionName() {
     return json.version
 }
 
+def computeReactVersion() {
+    // dynamically retrieve version from package.json
+    def slurper = new JsonSlurper()
+    def json = slurper.parse(file('../package.json'), "utf-8")
+    return json.dependencies."react-native"
+}
+
 buildscript {
     repositories {
         maven {
@@ -56,5 +63,5 @@ repositories {
 }
 
 dependencies {
-    api 'com.facebook.react:react-native:0.57.1'
+    api "com.facebook.react:react-native:${computeReactVersion()}"
 }
