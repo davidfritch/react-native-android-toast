@@ -52,6 +52,8 @@ But here are the steps for convenience:
 
 Launch Android Studio and import the project by selecting `[your project root]/android` directory.
 
+Note: A gotcha here is that it will fail to find a file and in the project `build.gradle`, need to set `google()` first in both of the `repositories` or Gradle will fail.  See https://stackoverflow.com/questions/52944351/android-ci-build-could-not-find-aapt2-proto-jar
+
 It should launch and from the Android view/perspective you should see both the `app` project and the `react-native-android-toast` components.
 
 modify `settings.gradle` like so:
